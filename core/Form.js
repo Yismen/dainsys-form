@@ -1,5 +1,8 @@
-let Error = require('./Error.js').default;
+import Error from './Error.js';
+import Vue from 'vue';
+
 let Http = Vue.http;
+
 export default class Form {
     constructor (data) {
         this.originalData = data;
