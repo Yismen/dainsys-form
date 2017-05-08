@@ -1,19 +1,22 @@
 {
   "name": "jorge",
   "version": "1.0.0",
-  "description": "This package contains a Form and an Error classes which are used in my Vue-2 projects",
-  "main": "Error.js",
+  "description": "Form Class for Vue.js-2",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "\u0016https://github.com/Yismen/jorge.git"
+    "url": "git+https://github.com/Yismen/jorge.git"
   },
   "keywords": [
-    "Form",
-    "Error"
+    "Form"
   ],
   "author": "Yismen Jorge",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yismen/jorge/issues"
+  },
+  "homepage": "https://github.com/Yismen/jorge#readme"
 }
