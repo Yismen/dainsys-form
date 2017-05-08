@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/Yismen/jorge.git"
   },
+  "dependencies": {
+    "axios": "^0.16.1"
+  },
   "keywords": [
     "Form"
   ],
