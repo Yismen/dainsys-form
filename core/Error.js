@@ -1,4 +1,4 @@
-class Error {
+export default class Error {
     constructor() {
         this.errors = {};
     }
@@ -30,5 +30,3 @@ class Error {
     }
     
 }
-
-export default Error;
