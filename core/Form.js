@@ -1,6 +1,4 @@
 import Error from './Error.js';
-import Vue from 'vue';
-import axios from 'axios';
 
 export default class Form {
     constructor (data) {
@@ -13,7 +11,7 @@ export default class Form {
         }
 
         this.error = new Error();
-        this.http = axios;
+        this.http = Vue.http;
     }
 
     submit(requestType, url) {
@@ -28,9 +26,9 @@ export default class Form {
                     resolve(response.data);
                 })
                 .catch(error => {
-                    this.onFail(error.response.data);
+                    this.onFail(error.data);
 
-                    reject(error.response.data);
+                    reject(error.data);
                 })
         });
     }
