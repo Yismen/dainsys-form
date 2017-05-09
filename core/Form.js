@@ -1,10 +1,10 @@
 import Error from './Error.js';
 import Vue from 'vue';
-
-let Http = Vue.http;
+import axios from 'axios';
 
 export default class Form {
     constructor (data) {
+
         this.originalData = data;
         this.fields = {}
 
@@ -13,25 +13,38 @@ export default class Form {
         }
 
         this.error = new Error();
-
-        this.http = Http;
+        this.http = axios;
     }
 
     submit(requestType, url) {
+
         requestType = requestType.toLowerCase();
-        let vm = this;
-        return this.http[requestType](url, vm.fields)
-            // .then(this.onSuccess.bind(this))
-            .catch(this.onFail.bind(this));
+
+        return new Promise((resolve, reject) => {
+            this.http[requestType](url, this.fields)
+                .then(response => {
+                    this.onSuccess(response.data);
+
+                    resolve(response.data);
+                })
+                .catch(error => {
+                    this.onFail(error.response.data);
+
+                    reject(error.response.data);
+                })
+        });
     }
 
     onSuccess(response) {
         this.error.clear();
+
+        this.reset();
+
         return response;
     }
 
     onFail(errors) {
-        this.error.record(errors.data);
+        this.error.record(errors);
     }
 
     get(url) {
