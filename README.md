@@ -1,3 +1,7 @@
-# jorge
-# add by using npm install https://github.com/Yismen/jorge.git
-# Reference with import Form from 'jorge'
+# jorge.form
+#
+# Installation:
+# npm install https://github.com/Yismen/jorge.form.git
+#
+# Use:
+# import Form from 'jorge.form'
