@@ -1,5 +1,5 @@
 {
-  "name": "jorge",
+  "name": "jorge.form",
   "version": "1.0.0",
   "description": "Form Class for Vue.js-2",
   "main": "main.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Yismen/jorge.git"
+    "url": "git+https://github.com/Yismen/jorge.form.git"
   },
   "dependencies": {
     "axios": "^0.16.1"
@@ -19,7 +19,7 @@
   "author": "Yismen Jorge",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Yismen/jorge/issues"
+    "url": "https://github.com/Yismen/jorge.form/issues"
   },
-  "homepage": "https://github.com/Yismen/jorge#readme"
+  "homepage": "https://github.com/Yismen/jorge.form#readme"
 }
