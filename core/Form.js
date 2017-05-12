@@ -75,15 +75,4 @@ export default class Form {
         }
     }
 
-    // reset(fieldsArray) {
-    //     let fields = this.fields;
-    //     if (fieldsArray) {
-    //         fields = fieldsArray;
-    //     } 
-
-    //     for(let field in fields) {
-    //         console.log(field)
-    //         this.fields[field] = '';
-    //     }
-    // }
 }
