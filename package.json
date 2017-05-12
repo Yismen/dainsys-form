@@ -11,7 +11,8 @@
     "url": "git+https://github.com/Yismen/jorge.form.git"
   },
   "dependencies": {
-    "axios": "^0.16.1"
+    "axios": "^0.16.1",
+     "v-toast": "^2.1.7"
   },
   "keywords": [
     "Form"
