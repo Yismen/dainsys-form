@@ -1,4 +1,5 @@
 import Error from './Error.js';
+import Toast from 'v-toast'
 
 export default class Form {
     constructor (data) {
@@ -11,6 +12,7 @@ export default class Form {
         }
 
         this.error = new Error();
+        this.notify = Toast;
         this.http = Vue.http;
     }
 
@@ -19,6 +21,8 @@ export default class Form {
         requestType = requestType.toLowerCase();
 
         return new Promise((resolve, reject) => {
+
+            this.notify.loading({message: 'Loading. Please wait!', duration: 0});
             this.http[requestType](url, this.fields)
                 .then(response => {
                     this.onSuccess(response.data);
@@ -30,6 +34,8 @@ export default class Form {
 
                     reject(error.data);
                 })
+
+            this.notify.remove
         });
     }
 
@@ -38,10 +44,14 @@ export default class Form {
 
         this.reset();
 
+        this.notify.success({message: 'Great! Operation successful.', duration: 3000});
+
         return response;
     }
 
     onFail(errors) {
+        this.notify.error({message: 'Oups! There are errors...', duration: 3000});
+
         this.error.record(errors);
     }
 
@@ -74,5 +84,4 @@ export default class Form {
             this.fields[field] = '';
         }
     }
-
 }
