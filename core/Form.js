@@ -1,19 +1,24 @@
 import Error from './Error.js';
-import Toast from 'v-toast'
+import Notify from 'v-toast'
 
 export default class Form {
-    constructor (data) {
+    constructor (data, clear = true) {
+
+        this.clearForm = clear;
 
         this.originalData = data;
         this.fields = {}
+        this.files = new FormData()
 
         for (let field in data) {
             this.fields[field] = data[field];
         }
 
         this.error = new Error();
-        this.notify = Toast;
+        this.notify = Notify;
         this.http = Vue.http;
+
+        // window.form = this
     }
 
     submit(requestType, url) {
@@ -23,6 +28,9 @@ export default class Form {
         return new Promise((resolve, reject) => {
 
             this.notify.loading({message: 'Loading. Please wait!', duration: 0});
+
+            this.fields = this.getLoadedFiles();
+
             this.http[requestType](url, this.fields)
                 .then(response => {
                     this.onSuccess(response.data);
@@ -34,23 +42,23 @@ export default class Form {
 
                     reject(error.data);
                 })
-
-            this.notify.remove
         });
     }
 
     onSuccess(response) {
         this.error.clear();
 
-        this.reset();
+        if (this.clearForm) {
+            this.reset();
+        }        
 
         this.notify.success({message: 'Great! Operation successful.', duration: 3000});
 
-        return response;
+        // return response;
     }
 
     onFail(errors) {
-        this.notify.error({message: 'Oups! There are errors...', duration: 3000});
+        this.notify.error({message: 'Oups! There are errors...', duration: 500});
 
         this.error.record(errors);
     }
@@ -77,11 +85,40 @@ export default class Form {
 
     reset(field) {
         if (field) { 
-            return this.fields[field] = '';
+            this.resetField(field);
         }
 
         for(let field in this.fields) {
             this.fields[field] = '';
         }
+    }
+
+    getLoadedFiles () {
+        if (this.filesCount(this.files) > 0) {
+            for(let field in this.fields) {
+                this.files.append(field, this.fields[field]);
+            }
+
+            return this.files;
+        }
+
+        return this.fields;
+    }
+
+    filesCount(files) {
+        let entries = []
+        for(let entrie of files.entries()) {
+            entries.push(entrie);
+        }
+        let length = entries.length;
+
+        entries = []
+        return length;        
+    }
+
+    loadFiles(name, files) {
+        if (!files || !files.length) return;
+
+        return this.files.append(name, files[0]);
     }
 }
