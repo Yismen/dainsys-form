@@ -17,8 +17,6 @@ export default class Form {
         this.error = new Error();
         this.notify = Notify;
         this.http = Vue.http;
-
-        // window.form = this
     }
 
     submit(requestType, url) {
@@ -53,12 +51,10 @@ export default class Form {
         }        
 
         this.notify.success({message: 'Great! Operation successful.', duration: 3000});
-
-        // return response;
     }
 
     onFail(errors) {
-        this.notify.error({message: 'Oups! There are errors...', duration: 500});
+        this.notify.error({message: 'Oups! The form have errors...', duration: 500});
 
         this.error.record(errors);
     }
@@ -93,6 +89,12 @@ export default class Form {
         }
     }
 
+    loadFiles(name, files) {
+        if (!files || !files.length) return;
+
+        return this.files.append(name, files[0]);
+    }
+    
     getLoadedFiles () {
         if (this.filesCount(this.files) > 0) {
             for(let field in this.fields) {
@@ -114,11 +116,5 @@ export default class Form {
 
         entries = []
         return length;        
-    }
-
-    loadFiles(name, files) {
-        if (!files || !files.length) return;
-
-        return this.files.append(name, files[0]);
     }
 }
