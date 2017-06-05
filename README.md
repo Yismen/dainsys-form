@@ -19,7 +19,8 @@ Working with Files:
   1.2 @change="form.loadFiles($event.target.name, $event.target.files)"
 
 To Display Errors, add the following span:
-  1. '<span class="text-danger" v-if="form.error.has('name')">{{ form.error.get('name') }}</span>'
+  1. Add a span, with class="text-danger"
+  2. Add the following directive: v-if="form.error.has('name')" v-text="form.error.get('name')"
 
 To remove the errors while the field changes, add the following directive to you form:
   1. @keydown="form.error.clear($event.target.name)"
