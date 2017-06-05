@@ -1,27 +1,26 @@
-# jorge.form
-#
-# Installation:
-# npm install https://github.com/Yismen/jorge.form.git
-#
-# Use:
-# In your component, use import Form from 'jorge.form';
+#jorge.form
 
-# Make sure you use one of the resource libraries, most prefered axios.
+Installation:
+  1. npm install https://github.com/Yismen/jorge.form.git
 
-# Assign that library to vue by declaring Vue.http = axios (or any other library)
+Use:
+  1. In your component, use import Form from 'jorge.form';
+  2. Make sure you use one of the resource libraries, most prefered axios.
 
-# Bind the model by adding the name and v-model attributes to your form fields:
-#       name="card"
-#       v-model="form.fields.card"
+  3. Assign that library to vue by declaring Vue.http = axios (or any other library)
 
-# Working with Files:
-#     Add the following directive to you vue form: 
-#         enctype="multipart/form-data" 
-#         @change="form.loadFiles($event.target.name, $event.target.files)"
+Bind the model by adding the name and v-model attributes to your form fields:
+  1. name="card"
+  2. v-model="form.fields.card"
 
-# To Display Errors:
-#         <span class="text-danger" v-if="form.error.has('name')">{{ form.error.get('name') }}</span>
+Working with Files:
+  1. Add the following directive to you vue form: 
+  1.1 enctype="multipart/form-data" 
+  1.2 @change="form.loadFiles($event.target.name, $event.target.files)"
 
-# To remove the errors while the field changes, add the following directive to you form:
-#         @keydown="form.error.clear($event.target.name)"
+To Display Errors:
+  1. <span class="text-danger" v-if="form.error.has('name')">{{ form.error.get('name') }}</span>
+
+To remove the errors while the field changes, add the following directive to you form:
+  1. @keydown="form.error.clear($event.target.name)"
 
