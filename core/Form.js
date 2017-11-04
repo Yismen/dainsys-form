@@ -5,7 +5,7 @@ export default class Form {
     constructor (data, options = {}) {
         this.default = Object.assign({
             notify: true,
-            clear: true
+            clear: false
         }, options);
 
         this.originalData = data;
