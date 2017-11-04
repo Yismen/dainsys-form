@@ -1,10 +1,12 @@
 import Error from './Error.js';
-import Notify from 'v-toast'
+import Notification from 'v-toast'
 
 export default class Form {
-    constructor (data, clear = true) {
-
-        this.clearForm = clear;
+    constructor (data, options = {}) {
+        this.default = Object.assign({
+            notify: true,
+            clear: true
+        }, options);
 
         this.originalData = data;
         this.fields = {}
@@ -15,7 +17,7 @@ export default class Form {
         }
 
         this.error = new Error();
-        this.notify = Notify;
+        this.notification = Notification;
         this.http = Vue.http;
     }
 
@@ -25,8 +27,9 @@ export default class Form {
 
         return new Promise((resolve, reject) => {
 
-            this.notify.loading({message: 'Loading. Please wait!', duration: 0});
-
+            if (this.default.notify == true) {
+                this.notification.loading({message: 'Loading. Please wait!', duration: 0});
+            }
             this.fields = this.getLoadedFiles();
 
             this.http[requestType](url, this.fields)
@@ -46,15 +49,19 @@ export default class Form {
     onSuccess(response) {
         this.error.clear();
 
-        if (this.clearForm) {
+        if (this.default.clear) {
             this.reset();
-        }        
+        }    
 
-        this.notify.success({message: 'Great! Operation successful.', duration: 3000});
+        if (this.default.notify == true) {
+            this.notification.success({message: 'Great! Operation successful.', duration: 3000});
+        }
     }
 
     onFail(errors) {
-        this.notify.error({message: 'Oups! The form have errors...', duration: 500});
+       if (this.default.notify) {
+           this.notification.error({message: 'Oups! The form have errors...', duration: 500});
+       } 
 
         this.error.record(errors);
     }
