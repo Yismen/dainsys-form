@@ -1,0 +1,25 @@
+{
+    "name": "dainsys-form",
+    "version": "1.0.0",
+    "description": "Form Class for Vue.js-2",
+    "main": "Form.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Yismen/dainsys-form.git"
+    },
+    "dependencies": {
+        "axios": "^0.16.1"
+    },
+    "keywords": [
+        "Form"
+    ],
+    "author": "Yismen Jorge",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Yismen/dainsys-form/issues"
+    },
+    "homepage": "https://github.com/Yismen/dainsys-form#readme"
+}
