@@ -1,5 +1,5 @@
 import Error from './Error.js';
-import http from 'axios';
+// import http from 'axios';
 
 export default class Form {
     constructor(data, options = {}) {
@@ -16,7 +16,7 @@ export default class Form {
         }
 
         this.error = new Error();
-        this.http = http;
+        this.http = axios;
     }
 
     submit(requestType, url) {
