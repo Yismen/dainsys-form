@@ -1,8 +1,8 @@
 #jorge.form
 
 Installation and Ussage:
-  1. npm install https://github.com/Yismen/dainsys-form.git --save
-  2. move it to your vendor folder
+  1. npm install git+https://github.com/Yismen/dainsys-form.git --save
+  2. move it to your vendor folder: cp -r ./node_modules/dainsys-form/ ./resources/assets/js/vendor/  
   3. import it in your component 'path/vendor/dainsys-form'
 
 Bind the model by adding the name and v-model attributes to your form fields:
