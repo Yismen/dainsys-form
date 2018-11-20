@@ -1,23 +1,25 @@
 # jorge.form
 
-Installation and Ussage:
+* Installation and Ussage:
   1. npm install git+https://github.com/Yismen/dainsys-form.git --save
-  2. move it to your vendor folder: cp -r ./node_modules/dainsys-form/ ./resources/assets/js/vendor/  
+  2. move it to your vendor folder: 
+    * cp -r ./node_modules/dainsys-form/ ./resources/assets/js/vendor/  
   3. import it in your component 'path/vendor/dainsys-form'
+    * it is recomended to install 'vue-container' npm install --save vue-container for depedencies management
 
-Bind the model by adding the name and v-model attributes to your form fields:
+* Bind the model by adding the name and v-model attributes to your form fields:
   1. name="card"
   2. v-model="form.fields.card"
 
-Working with Files:
+* Working with Files:
   1. Add the following directive to you vue form: 
   1.1 enctype="multipart/form-data" 
   1.2 @change="form.loadFiles($event.target.name, $event.target.files)"
 
-To Display Errors, add the following span:
+* To Display Errors, add the following span:
   1. Add a span, with class="text-danger"
   2. Add the following directive: v-if="form.error.has('name')" v-text="form.error.get('name')"
 
-To remove the errors while the field changes, add the following directive to you form:
+* To remove the errors while the field changes, add the following directive to you form:
   - @keydown="form.error.clear($event.target.name)" or @change="form.error.clear($event.target.name)"
 
