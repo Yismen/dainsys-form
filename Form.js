@@ -1,5 +1,5 @@
 import Error from './Error.js';
-// import http from 'axios';
+import axios from 'axios';
 
 export default class Form {
     constructor(data, options = {}) {
@@ -39,6 +39,7 @@ export default class Form {
 
     onSuccess(response) {
         this.error.clear();
+        this.files = new FormData()
 
         if (this.default.reset) {
             this.reset();
@@ -78,29 +79,29 @@ export default class Form {
     loadFiles(name, files) {
         if (!files || !files.length) return;
 
-        return this.files.append(name, files[0]);
+        for (let entrie in this.files.entries()) {
+        }
+        this.files.append(name, files[0]);
+        for (let entrie in this.files.entries()) {
+        }
     }
 
     getLoadedFiles() {
-        if (this.filesCount(this.files) > 0) {
+        if (this.hasFiles()) {
             for (let field in this.fields) {
                 this.files.append(field, this.fields[field]);
             }
-
             return this.files;
         }
 
         return this.fields;
     }
 
-    filesCount(files) {
+    hasFiles() {
         let entries = []
-        for (let entrie of files.entries()) {
+        for (let entrie of this.files.entries()) {
             entries.push(entrie);
         }
-        let length = entries.length;
-
-        entries = []
-        return length;
+        return  entries.length > 0 ? true : false;
     }
 }
