@@ -1,5 +1,5 @@
 import Error from './Error.js';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default class Form {
     constructor(data, options = {}) {
