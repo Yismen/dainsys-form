@@ -8,10 +8,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Yismen/dainsys-form.git"
-    },
-    "dependencies": {
-        "axios": "^0.16.1"
+        "url": "https://github.com/Yismen/dainsys-form"
     },
     "keywords": [
         "Form"
@@ -21,5 +18,8 @@
     "bugs": {
         "url": "https://github.com/Yismen/dainsys-form/issues"
     },
-    "homepage": "https://github.com/Yismen/dainsys-form#readme"
+    "homepage": "https://github.com/Yismen/dainsys-form#readme",
+    "devDependencies": {
+        "axios": "^0.26.1"
+    }
 }
